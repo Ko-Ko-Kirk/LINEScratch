@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "LINE LIFF的刮刮樂";
+}
+
+<h4 id="lineuser">@ViewBag.Name 您好，這是使用LIFF技術來達成的小活動哦！</h4>
+
+<h4>用手指刮掉下面的圖片，就可以看到自己有沒有中獎囉！！</h4>
+
+<div id="scratch"><img src=" @Url.Content(ViewBag.ImgUrl) " /></div>
+
+
+<script src="~/js/ScratchIt.min.js"></script>
+<script>
+    var line = new RegExp("^U[0-9a-f]{32}$");
+    if (!line.test("@ViewBag.ID")) {
+        window.location.replace("@Url.Action("UseLINE", "Home")");;
+    }
+
+    var containerEl = document.getElementById("scratch"),
+        overlayImgUrl = "@Url.Content("~/img/cover.jpg")",
+        brushImgUrl = "@Url.Content("~/img/brush1.png")",
+        revealPercent = 50;
+
+    function onReveal() { };
+
+    if (ScratchIt.isSupported()) {
+        ScratchIt(containerEl, overlayImgUrl, brushImgUrl, onReveal, revealPercent);
+    }
+</script>

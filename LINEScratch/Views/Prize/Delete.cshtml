@@ -1,0 +1,41 @@
+﻿@model LINEScratch.Models.Prize
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+
+    ViewData["Title"] = "Delete";
+}
+
+<h1>刪除</h1>
+
+<h3>你確定要刪除獎項嗎？</h3>
+<div>
+    <h4>獎項</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PrizeId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PrizeId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PrizeName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PrizeName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PrizePic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PrizePic)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="刪除" class="btn btn-danger" /> |
+        <a asp-action="Index">回列表</a>
+    </form>
+</div>

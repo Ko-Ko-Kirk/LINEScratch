@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>LINE LIFF的刮刮樂</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/site1.css" rel="stylesheet" />
+</head>
+<body>
+
+    @RenderBody()
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - KoKo Mexcelsa
+        </div>
+        </footer>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        @RenderSection("Scripts", required: false)
+        <script src="~/js/site.js"></script>
+
+</body>
+</html>

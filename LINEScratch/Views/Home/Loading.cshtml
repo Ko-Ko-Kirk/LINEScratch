@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "LINE LIFF的刮刮樂";
+}
+
+<h4 id="lineuser"></h4>
+
+<form action="@Url.Action("Loading")" method="POST">
+    <input type='hidden' id='userId' name="userId" />
+    <input type='hidden' id='displayName' name="displayName" />
+    <input type='hidden' id='pictureUrl' name="pictureUrl" />
+    <input type='hidden' id='statusMessage' name="statusMessage" />
+</form>
+
+<button class="btn-lg btn-success mb-4" id="submit_form">開始刮刮樂</button>
+<script>
+    var liffID = '@ViewBag.LIFFID';
+
+    function initializeLiff(myLiffId) {
+        liff.init({
+            liffId: myLiffId
+            })
+            .then(() => {
+                liff.getProfile().then(function (e) {
+                    $('#lineuser').text(e.displayName + "您好，歡迎參加Chatbot台中小聚的刮刮樂");
+                    $("#userId").val(e.userId);
+                    $("#displayName").val(e.displayName);
+                    $("#pictureUrl").val(e.pictureUrl);
+                    $("#statusMessage").val(e.statusMessage);
+                });
+            })
+            .catch((err) => {
+                alert("網路連線不佳，請再重試一次 "+JSON.stringify(err));
+            });
+    }
+
+    $(document).ready(function () {
+        //init LIFF
+        initializeLiff(liffID);
+
+        $("#submit_form").click(function () {
+
+            $("form").submit();
+        });
+    });
+</script>

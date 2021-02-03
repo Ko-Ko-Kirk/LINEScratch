@@ -1,0 +1,56 @@
+﻿@model IEnumerable<LINEScratch.Models.Prize>
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+
+    ViewData["Title"] = "獎項列表";
+
+}
+
+<h1>獎項列表</h1>
+
+<p>
+    <a asp-action="Create">建立新獎項</a>
+</p>
+<p>
+    目前的獎項數量：@ViewBag.count
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PrizeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrizeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrizePic)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrizeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrizeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrizePic)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">編輯</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">刪除</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

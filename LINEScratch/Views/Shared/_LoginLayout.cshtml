@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor httpContextAccessor
+@{
+    //simple login 
+    var account = "";
+    if (httpContextAccessor.HttpContext.Session.GetString("account") == null
+        || string.IsNullOrWhiteSpace(httpContextAccessor.HttpContext.Session.GetString("account").ToString()))
+    {
+        httpContextAccessor.HttpContext.Response.Redirect("/Login");
+    }
+    else
+    {
+        account = httpContextAccessor.HttpContext.Session.GetString("account").ToString();
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>LINE LIFF的刮刮樂後台</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/site1.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("獎項系統", "Index", "Prize", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("得獎瀏覽", "Index", "Winner", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("會員瀏覽", "Members", "Winner", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - KoKo Mexcelsa
+        </div>
+    </footer>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+    <script src="~/js/site.js"></script>
+    <script>
+        $(document).on('submit', 'form', function () {
+            var button = $(this).find('input[type="submit"]');
+            button.val("登入中，請稍候");
+            setTimeout(function () {
+                button.attr('disabled', 'disabled');
+            }, 0);
+
+        });
+
+    </script>
+</body>
+</html>

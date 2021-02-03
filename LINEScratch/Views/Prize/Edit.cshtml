@@ -1,0 +1,46 @@
+﻿@model LINEScratch.Models.Prize
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+
+    ViewData["Title"] = "編輯";
+}
+
+<h1>編輯獎項</h1>
+
+<h4>編輯獎項</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="PrizeId" class="control-label"></label>
+                <input asp-for="PrizeId" class="form-control" />
+                <span asp-validation-for="PrizeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrizeName" class="control-label"></label>
+                <input asp-for="PrizeName" class="form-control" />
+                <span asp-validation-for="PrizeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrizePic" class="control-label"></label>
+                <input asp-for="PrizePic" class="form-control" />
+                <span asp-validation-for="PrizePic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="儲存" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">回列表</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
