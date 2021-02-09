@@ -22,3 +22,4 @@
 6. 在Azure 建立一個 bot service，把這個專案佈署到其中的 APP service 裡。
 7. 可以在後台設置你的獎項哦！
 8. 獎項圖片在img資料夾裡，可以抽換成您需要圖片，但是建議cover 和 thankyou 的檔名不要更改。
+9. DEMO可以參考投影片裡的QRCODE，可以自己加來玩玩看：https://www.slideshare.net/KoKo164/ss-242424799
